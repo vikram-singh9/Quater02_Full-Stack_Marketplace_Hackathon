@@ -1,72 +1,127 @@
-import Link from 'next/link';
-import React from 'react';
-import { FaLinkedin, FaInstagram, FaFacebookSquare, FaTwitter, FaPinterest } from "react-icons/fa";
-import { IoLogoSkype } from "react-icons/io";
+'use client'
+import React from "react";
+import { Input } from "./ui/input";
+import { Button } from "./ui/button";
+import { CiLinkedin, CiFacebook, CiInstagram, CiTwitter } from "react-icons/ci";
+import { BsSkype, BsPinterest } from "react-icons/bs";
 
 const Footer = () => {
   return (
     <>
-      <div className='px-6 md:px-12 py-12 bg-[#2A254B] mt-12'>
-        <div className="flex flex-wrap gap-12 md:gap-[100px] lg:gap-[200px]">
-          <div className="text-white w-full sm:w-auto">
-            <h1 className="text-lg md:text-xl font-bold">Menu</h1>
-            <div className='space-y-2'>
-              <h1><Link href={'/'}>New Arrivals</Link></h1>
-              <h1><Link href={'/'}>Best sellers</Link></h1>
-              <h1><Link href={'/'}>Recently viewed</Link></h1>
-              <h1><Link href={'/'}>Popular this week</Link></h1>
-              <h1><Link href={'/'}>All Products</Link></h1>
-            </div>
+      <section className="w-full px-6 md:px-20 py-9 bg-[#2A254B] flex flex-wrap justify-between text-white">
+        {/* Links Section */}
+        <div className="flex flex-wrap gap-16 mb-8 text-sm">
+          <div>
+            <ul className="space-y-2">
+              <li>
+                <a href="#">Menu</a>
+              </li>
+              <li>
+                <a href="#">New Arrivals</a>
+              </li>
+              <li>
+                <a href="#">Best Sellers</a>
+              </li>
+              <li>
+                <a href="#">Recently Viewed</a>
+              </li>
+              <li>
+                <a href="#">Popular This Week</a>
+              </li>
+              <li>
+                <a href="#">All Products</a>
+              </li>
+            </ul>
           </div>
-          <div className="text-white w-full sm:w-auto">
-            <h1 className="text-lg md:text-xl font-bold">Categories</h1>
-            <div className='space-y-2'>
-              <h1><Link href={'/'}>Crockery</Link></h1>
-              <h1><Link href={'/'}>Furniture</Link></h1>
-              <h1><Link href={'/'}>Homeware</Link></h1>
-              <h1><Link href={'/'}>Plant pots</Link></h1>
-              <h1><Link href={'/'}>Chairs</Link></h1>
-            </div>
+
+          <div>
+            <ul className="space-y-2">
+              <li>
+                <a href="#">Categories</a>
+              </li>
+              <li>
+                <a href="#">Furniture</a>
+              </li>
+              <li>
+                <a href="#">Home Ware</a>
+              </li>
+              <li>
+                <a href="#">Plant Pots</a>
+              </li>
+              <li>
+                <a href="#">Chairs</a>
+              </li>
+              <li>
+                <a href="#">Crockery</a>
+              </li>
+            </ul>
           </div>
-          <div className="text-white w-full sm:w-auto">
-            <h1 className="text-lg md:text-xl font-bold">Our Company</h1>
-            <div className='space-y-2'>
-              <h1><Link href={'/about'}>About us</Link></h1>
-              <h1><Link href={'/'}>Vacancies</Link></h1>
-              <h1><Link href={'/'}>Contact us</Link></h1>
-              <h1><Link href={'/'}>Privacy</Link></h1>
-              <h1><Link href={'/'}>Return policy</Link></h1>
-            </div>
-          </div>
-          <div className="text-white w-full sm:w-auto">
-            <h1 className="text-lg md:text-xl font-bold">Join our mailing list</h1>
-            <div className='mt-4'>
-              <input
-                type="text"
-                placeholder="your@email.com"
-                className='w-full sm:w-[250px] lg:w-[300px] h-[48px] p-2 bg-transparent opacity-35 border border-white rounded-md'
-              />
-              <button className='mt-2 sm:mt-0 sm:ml-2 w-full sm:w-[100px] h-[48px] bg-white text-[#2A254B] rounded-md'>
-                Sign up
-              </button>
-            </div>
+
+          <div>
+            <ul className="space-y-2">
+              <li>
+                <a href="#">Our Company</a>
+              </li>
+              <li>
+                <a href="#">About Us</a>
+              </li>
+              <li>
+                <a href="#">Return Policy</a>
+              </li>
+              <li>
+                <a href="#">Vacancies</a>
+              </li>
+              <li>
+                <a href="#">Contact Us</a>
+              </li>
+              <li>
+                <a href="#">Privacy</a>
+              </li>
+            </ul>
           </div>
         </div>
 
-        <hr className='bg-[#4E4D93] my-8' />
-        <div className='flex flex-wrap justify-between items-center text-white gap-4'>
-          <div>
-            <h1>Copyright 2022 Avion LTD</h1>
-            <p className='pl-[440px] text-sm'>Made with 🧡 by @Vikram</p>
+        {/* Newsletter Section */}
+        <div className="space-y-4 w-full md:w-auto">
+          <span className="block text-lg">Join Our Mailing List</span>
+          <div className="flex items-center">
+            <Input
+              type="email"
+              placeholder="Your@gmail.com"
+              className="h-12 text-black w-full md:w-auto"
+
+            />
+            <Button className="h-12 px-6" variant="vikram" onClick={() => alert('sign up successflly')}>
+              Sign up
+            </Button>
           </div>
-          <div className='flex gap-4'>
-            <Link href={'/'}><FaLinkedin size={20} /></Link>
-            <Link href={'/'}><FaFacebookSquare size={20} /></Link>
-            <Link href={'/'}><FaInstagram size={20} /></Link>
-            <Link href={'/'}><IoLogoSkype size={20} /></Link>
-            <Link href={'/'}><FaTwitter size={20} /></Link>
-            <Link href={'/'}><FaPinterest size={20} /></Link>
-          </div>
+        </div>
+      </section>
+
+      <hr className="bg-[#726e8d]" />
+
+      {/* Footer Bottom Section */}
+      <div className="w-full px-6 md:px-20 py-3 flex flex-wrap justify-between items-center bg-[#2A254B] text-white text-sm">
+        <p className="mb-2 md:mb-0">Copyright 2022 Avion LTD</p>
+        <div className="flex gap-4">
+          <a href="#" aria-label="LinkedIn">
+            <CiLinkedin size={24} />
+          </a>
+          <a href="#" aria-label="Facebook">
+            <CiFacebook size={24} />
+          </a>
+          <a href="#" aria-label="Instagram">
+            <CiInstagram size={24} />
+          </a>
+          <a href="#" aria-label="Skype">
+            <BsSkype size={24} />
+          </a>
+          <a href="#" aria-label="Twitter">
+            <CiTwitter size={24} />
+          </a>
+          <a href="#" aria-label="Pinterest">
+            <BsPinterest size={24} />
+          </a>
         </div>
       </div>
     </>

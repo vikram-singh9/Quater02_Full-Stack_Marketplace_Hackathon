@@ -1,3 +1,4 @@
+'use client'
 import React from 'react'
 
 const Benefit = () => {
@@ -20,7 +21,7 @@ const Benefit = () => {
                   placeholder="your@email.com"
                   className="p-4 bg-[#F9F9F9] w-full md:w-[354px] h-[56px] outline-none mb-4 md:mb-0"
                 />
-                <button className='p-2 bg-[#2A254B] text-white w-full md:w-[118px] h-[56px]'>
+                <button className='p-2 bg-[#2A254B] text-white w-full md:w-[118px] h-[56px] '  onClick={() => alert('sign up successflly')}>
                   Signup
                 </button>
               </form>
