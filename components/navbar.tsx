@@ -46,7 +46,7 @@ const Navbar = () => {
         </div>
 
         {/* Hamburger menu for mobile */}
-        <div className="flex items-center gap-4 md:hidden">
+        <div className="flex items-centernp gap-4 md:hidden">
           <CiSearch size={25} className="text-[#2A254B]" />
           <button
             className="text-2xl focus:outline-none z-30"
