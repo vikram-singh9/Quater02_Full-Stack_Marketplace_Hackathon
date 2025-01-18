@@ -1,8 +1,26 @@
 "use client";
 import React from "react";
-
+import Image from "next/image";
 import { client } from "@/sanity/lib/client";
 import { useState, useEffect } from "react";
+
+interface Product {
+  _id: string;
+  name: string;
+  price: number;
+  description: string;
+  image_url: string;
+}
+
+const steelChair: Product = {
+  _id: "D24vb8qimRxTY37EypIGz4",
+  name: "Steel Chair",
+  price: 250,
+  description:
+    "A timeless design, with premium materials features as one of our most popular and iconic pieces. The dandy chair is perfect for any stylish living space with beech legs and lambskin leather upholstery",
+  image_url: "https://cdn.sanity.io/images/z8wu2f77/production/b3bbbd269d31ce9b57b7a867bf0b7f6fdc5b3208-721x759.png",
+};
+
 
 const Ceramics = () => {
   const [data, setdata] = useState([]);
@@ -36,9 +54,9 @@ const Ceramics = () => {
       <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-12">
         {/* Product 1 */}
 
-        {data.map((item: any) => (
+        {data.map((item: Product) => (
           <div className="w-full h-auto" key={item._id}>
-            <img
+            <Image
               src={item.image_url}
               height={500}
               width={700}

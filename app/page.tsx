@@ -4,7 +4,7 @@ import Feature2 from '@/components/feature2'
 import Features from '@/components/features'
 
 import Hero from '@/components/hero'
-import Listing from '@/components/listings'
+// import Listing from '@/components/listings'
 import React from 'react'
 
 const page = () => {
@@ -13,7 +13,7 @@ const page = () => {
         <Hero/>
         <Features/>
         <Ceramics/>
-        <Listing/>
+        {/* <Listing/> */}
         <EmailSignUp/>
         <Feature2/>
         

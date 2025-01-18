@@ -1,8 +1,17 @@
 "use client";
 import React from "react";
-
 import { client } from "@/sanity/lib/client";
 import { useState, useEffect } from "react";
+import Image from "next/image";
+
+
+interface Product {
+  _id: string;
+  name: string;
+  price: number;
+  description: string;
+  image_url: string;
+}
 
 const Ceramics = () => {
   const [data, setdata] = useState([]);
@@ -36,9 +45,9 @@ const Ceramics = () => {
       <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-12">
         {/* Product 1 */}
 
-        {data.map((item: any) => (
+        {data.map((item: Product) => (
           <div className="w-full h-auto" key={item._id}>
-            <img
+            <Image
               src={item.image_url}
               height={500}
               width={700}
