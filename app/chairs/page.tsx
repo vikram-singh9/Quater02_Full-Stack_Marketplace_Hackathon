@@ -11,7 +11,7 @@ const Ceramics = () => {
     async function getData() {
       try {
         const fetchdata = await client.fetch(`
-          *[_type == "product"][8..31]{
+          *[_type == "product"][0..31]{
   _id,
   name,
   price,
@@ -30,7 +30,7 @@ const Ceramics = () => {
   return (
     <div className="px-4 md:px-8 py-12 text-[#2A254B] mt-12">
       {/* Title */}
-      <h1 className="text-3xl font-semibold">New Ceramics</h1>
+      <h1 className="text-3xl font-semibold">New Arrival All Chairs</h1>
 
       {/* Product Items */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-12">

@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
 
-const Shopping = () => {
+const checkout = () => {
   return (
     <>
       <section>
@@ -82,4 +82,4 @@ const Shopping = () => {
   );
 };
 
-export default Shopping;
+export default checkout;

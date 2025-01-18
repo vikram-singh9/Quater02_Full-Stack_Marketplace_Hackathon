@@ -16,11 +16,11 @@ const Navbar = () => {
 
   const navItems = [
     { name: 'Ceramics', href: '/ceramics' },
-    { name: 'Listing', href: '/shopping' },
-    { name: 'Chairs', href: '/ceramics' },
+    { name: 'Checkout', href: '/checkout' },
+    { name: 'Chairs', href: '/chairs' },
     { name: 'Register', href: '/register' },
     { name: 'About', href: '/about' },
-    { name: 'Cart', href: '/productlisting' },
+    { name: 'Cart', href: '/cart' },
   ];
 
   return (

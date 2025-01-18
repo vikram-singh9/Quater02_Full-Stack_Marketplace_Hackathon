@@ -1,75 +1,59 @@
-import Image from 'next/image'
-import React from 'react'
+"use client";
+import React from "react";
+
+import { client } from "@/sanity/lib/client";
+import { useState, useEffect } from "react";
 
 const Ceramics = () => {
+  const [data, setdata] = useState([]);
+
+  useEffect(() => {
+    async function getData() {
+      try {
+        const fetchdata = await client.fetch(`
+          *[_type == "product"][1..8]{
+  _id,
+  name,
+  price,
+  description,
+  "image_url":image.asset->url,
+}`);
+        const result = fetchdata;
+        setdata(result);
+      } catch (error) {
+        console.log("error", error);
+      }
+    }
+    getData();
+  });
+
   return (
     <>
       <section>
         <div className="px-4 md:px-8 py-12 text-[#2A254B] mt-12">
           {/* Title */}
-          <h1 className="text-2xl font-semibold">New Ceramics</h1>
+          <h1 className="text-3xl font-semibold">New Ceramics</h1>
 
           {/* Product Items */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-12">
             {/* Product 1 */}
-            <div className="w-full h-auto">
-              <Image
-                src={'/images/chair.png'}
-                height={700}
-                width={700}
-                alt="chair"
-                className="w-full h-[80%] object-cover"
-              />
-              <div className="mt-4 text-[#2A254B]">
-                <p className="py-2">The Dendy Chair</p>
-                <p>$250</p>
-              </div>
-            </div>
 
-            {/* Product 2 */}
-            <div className="w-full h-auto">
-              <Image
-                src={'/images/vase.png'}
-                height={700}
-                width={700}
-                alt="vase"
-                className="w-full h-[80%] object-cover"
-              />
-              <div className="mt-4 text-[#2A254B]">
-                <p className="py-2">Rustic VaseSet</p>
-                <p>$155</p>
+            {data.map((item: any) => (
+              <div className="w-full h-auto" key={item._id}>
+                <img
+                  src={item.image_url}
+                  height={500}
+                  width={700}
+                  alt="chair"
+                  className="w-full h-[80%] object-cover"
+                />
+                <div className="mt-4 text-[#2A254B]">
+                  <p className="py-2 font-bold">{item.name}</p>
+                  <p>${item.price}</p>
+                  {/* <p className="text-[15px]">{item.description}</p> */}
+                </div>
               </div>
-            </div>
-
-            {/* Product 3 */}
-            <div className="w-full h-auto">
-              <Image
-                src={'/images/silky.png'}
-                height={700}
-                width={700}
-                alt="silky vase"
-                className="w-full h-[80%] object-cover"
-              />
-              <div className="mt-4 text-[#2A254B]">
-                <p className="py-2">The Silky Vase</p>
-                <p>$125</p>
-              </div>
-            </div>
-
-            {/* Product 4 */}
-            <div className="w-full h-auto">
-              <Image
-                src={'/images/lamp.png'}
-                height={700}
-                width={700}
-                alt="lamp"
-                className="w-full h-[80%] object-cover"
-              />
-              <div className="mt-4 text-[#2A254B]">
-                <p className="py-2">The Lucky Lamp</p>
-                <p>$399</p>
-              </div>
-            </div>
+            ))}
           </div>
 
           {/* View Collection Button */}
@@ -81,7 +65,7 @@ const Ceramics = () => {
         </div>
       </section>
     </>
-  )
-}
+  );
+};
 
 export default Ceramics;

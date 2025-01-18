@@ -1,12 +1,15 @@
 'use client'
 import Image from 'next/image'
-import React from 'react'
+import { client } from '@/sanity/lib/client'
+import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation';
 const Product = () => {
   const router = useRouter();
-
   const handleNavigation = () => {
+
     router.push('/productlisting'); // Navigates to the "/about" page
+
+
   };
   return (
     <>
@@ -32,7 +35,7 @@ const Product = () => {
               </div>
             </div>
 
-            {/* Product 2 */}
+            Product 2
             <div className='w-full md:w-[350px] h-auto'>
               <Image
                 src={'/images/chair.png'}

@@ -4,7 +4,7 @@ import { FaRecycle } from 'react-icons/fa6';
 import { BsTruck } from 'react-icons/bs';
 import { GiCheckMark } from 'react-icons/gi';
 import { BiCreditCard } from 'react-icons/bi';
-const ProductListing = () => {
+const cart = () => {
   const features = [
     {
       title: 'Next day as standard',
@@ -144,4 +144,4 @@ const ProductListing = () => {
   );
 };
 
-export default ProductListing;
+export default cart;
