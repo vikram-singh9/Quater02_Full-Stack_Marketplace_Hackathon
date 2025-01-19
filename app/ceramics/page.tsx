@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-import Image from "next/image";
 import { client } from "@/sanity/lib/client";
 import { useState, useEffect } from "react";
 
@@ -34,12 +33,12 @@ const Ceramics = () => {
       }
     }
     getData();
-  });
+  },[]);
 
   return (
     <div className="px-4 md:px-8 py-12 text-[#2A254B] mt-12">
       {/* Title */}
-      <h1 className="text-3xl font-semibold">New Ceramics</h1>
+      <h1 className="text-4xl font-semibold">New Ceramics</h1>
 
       {/* Product Items */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-12">
@@ -47,7 +46,7 @@ const Ceramics = () => {
 
         {data.map((item: Product) => (
           <div className="w-full h-auto" key={item._id}>
-            <Image
+            <img
               src={item.image_url}
               height={500}
               width={700}

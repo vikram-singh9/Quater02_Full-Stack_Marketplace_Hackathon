@@ -3,7 +3,7 @@ import React from "react";
 
 import { client } from "@/sanity/lib/client";
 import { useState, useEffect } from "react";
-import Image from "next/image";
+
 
 interface Product {
   _id: string;
@@ -49,7 +49,7 @@ const Ceramics = () => {
 
             {data.map((item:Product) => (
               <div className="w-full h-auto" key={item._id}>
-                <Image
+                <img
                   src={item.image_url}
                   height={500}
                   width={700}

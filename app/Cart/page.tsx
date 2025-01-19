@@ -36,11 +36,12 @@ const cart = () => {
           <div className="flex flex-col md:flex-row gap-8 items-center">
             <div className="w-full md:w-1/2 h-auto">
               <Image
-                src={'/images/Image Left.png'}
+                src={'/images/cart.png'}
                 height={800}
                 width={800}
                 alt="chair"
                 className="w-full h-auto object-cover"
+                priority
               />
             </div>
             <div className="w-full md:w-1/2 px-4 md:px-10 py-6 flex flex-col justify-center">
