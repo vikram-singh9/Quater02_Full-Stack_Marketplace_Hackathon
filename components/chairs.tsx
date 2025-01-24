@@ -7,6 +7,7 @@ import { useWishlist } from "@/context/WishListContext";
 import { useCart } from "@/context/CartContext";
 
 
+
 interface Product {
   _id: string;
   name: string;
@@ -17,6 +18,7 @@ interface Product {
 
 const Chairs = () => {
   const [data, setData] = useState<Product[]>([]);
+  const [loading, setLoading] = useState<boolean>(true); // Loader
   const { wishlist, addToWishlist, removeFromWishlist } = useWishlist();
   const { cart, addToCart, removeFromCart } = useCart();
   const router = useRouter(); // Use the router
@@ -36,6 +38,8 @@ const Chairs = () => {
         setData(fetchdata);
       } catch (error) {
         console.log("error", error);
+      }finally{
+        setLoading(false);
       }
     }
     getData();
@@ -44,6 +48,13 @@ const Chairs = () => {
   return (
     <div className="px-4 md:px-8 py-12 text-[#2A254B] mt-12">
       <h1 className="text-4xl font-semibold">Check out our latest Chairs</h1>
+      {loading ? (
+        <div className="flex justify-center items-center mt-12">
+        <div className="relative w-9 h-9">
+          <div className="absolute inset-0 rounded-full border-4 border-t-transparent border-gradient animate-spin"></div>
+        </div>
+      </div>
+      ):(
       <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-12">
         {data.map((item) => (
           <div
@@ -100,7 +111,7 @@ const Chairs = () => {
             </Button>
           </div>
         ))}
-      </div>
+      </div>)}
     </div>
   );
 };
