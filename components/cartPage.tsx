@@ -1,7 +1,7 @@
 import { useCart } from "@/context/CartContext"; // Import useCart hook
 import { Button } from "./ui/button";
 import Link from "next/link";
-import { Product } from "@/types/product";
+// import { Product } from "@/types/product";
 import Image from "next/image";
 
 // interface Item {
@@ -21,7 +21,7 @@ const CartPage = () => {
     <p className="text-lg text-center text-gray-600">Your cart is empty!</p>
   ) : (
     <div className="space-y-8">
-      {cart.map((item:any) => (
+      {cart.map((item) => (
         <div
           key={item._id}
           className="cart-item flex flex-col md:flex-row items-center rounded-lg p-6 gap-6"
@@ -41,7 +41,7 @@ const CartPage = () => {
           <div className="w-full md:w-1/2 flex flex-col justify-between">
             <div>
               <h2 className="text-2xl font-bold text-gray-800">{item.name}</h2>
-              <p className="text-gray-600 my-4">{item.description}</p>
+              {/* <p className="text-gray-600 my-4">{item.description}</p> */}
               <p className="text-lg font-semibold text-gray-700">
                 Price: ${item.price}
               </p>

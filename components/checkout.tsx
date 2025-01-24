@@ -70,7 +70,7 @@ const Checkout = () => {
               <div className="w-full lg:w-2/3">
                 <h1 className="text-xl font-semibold mb-6">Products</h1>
 
-                {cart.map((item:any) => (
+                {cart.map((item) => (
                   <div key={item._id} className="flex items-center gap-4 mb-6">
                     <Image
                       src={item.image_url}
@@ -81,7 +81,7 @@ const Checkout = () => {
                     />
                     <div>
                       <h1 className="text-lg font-semibold">{item.name}</h1>
-                      <p className="text-gray-600 text-sm">{item.description}</p>
+                      {/* <p className="text-gray-600 text-sm">{item.description}</p> */}
                       <h1 className="text-sm font-bold">${item.price}</h1>
                     </div>
                   </div>
