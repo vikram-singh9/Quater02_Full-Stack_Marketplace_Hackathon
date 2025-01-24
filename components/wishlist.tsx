@@ -22,11 +22,9 @@ const Wishlist = ({ wishlist = [] }: WishlistProps) => {
         {wishlist.length > 0 ? (
           wishlist.map((item) => (
             <div key={item._id} className="w-full h-auto">
-              <Image
+              <img
                 src={item.image_url}
                 alt={item.name}
-                width={400}
-                height={400}
                 className="w-full h-[80%] object-cover"
               />
               <div className="mt-4 text-[#2A254B]">

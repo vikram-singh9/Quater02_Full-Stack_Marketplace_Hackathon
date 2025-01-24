@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 import { useWishlist } from "@/context/WishListContext";
 import { useCart } from "@/context/CartContext";
-import Image from "next/image";
+
 
 interface Product {
   _id: string;
@@ -51,11 +51,10 @@ const Chairs = () => {
             className="w-full h-auto cursor-pointer"
             onClick={() => router.push(`/products/${item._id}`)} // Navigate to product page
           >
-            <Image
+            <img
               src={item.image_url}
               alt={item.name}
-              width={400}
-              height={400}
+             
               className="w-full h-[80%] object-cover"
             />
             <div className="mt-4 text-[#2A254B]">

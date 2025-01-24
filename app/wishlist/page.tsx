@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import { useWishlist } from "@/context/WishListContext";
-import Image from "next/image";
 
 const Wishlist = () => {
   const { wishlist } = useWishlist();
@@ -13,7 +12,7 @@ const Wishlist = () => {
         {wishlist.length > 0 ? (
           wishlist.map((item) => (
             <div key={item._id} className="w-full h-auto">
-              <Image
+              <img
                 src={item.image_url}
                 alt={item.name}
                 width={400}

@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState } from "react";
-import Image from "next/image";
 import { useCart } from "@/context/CartContext";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
@@ -72,10 +71,8 @@ const Checkout = () => {
 
                 {cart.map((item) => (
                   <div key={item._id} className="flex items-center gap-4 mb-6">
-                    <Image
+                    <img
                       src={item.image_url}
-                      width={100}
-                      height={100}
                       alt={item.name}
                       className="rounded-md"
                     />
