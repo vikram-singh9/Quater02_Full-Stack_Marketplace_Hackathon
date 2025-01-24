@@ -3,7 +3,7 @@
   "rules": {
     "no-console": "off", // Disables console warnings
     "react/no-unescaped-entities": "off", // Disables unescaped entity warnings
-    "typescript-eslint/no-unused-vars": "warn", // Warns on unused variables
+    "typescript-eslint/no-unused-vars": "off", // Warns on unused variables
     "@typescript-eslint/no-unused-vars": "warn" // Warns on unused variables
   }
 }
