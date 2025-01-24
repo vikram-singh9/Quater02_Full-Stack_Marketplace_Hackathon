@@ -1,6 +1,16 @@
 import { useCart } from "@/context/CartContext"; // Import useCart hook
 import { Button } from "./ui/button";
 import Link from "next/link";
+import { Product } from "@/types/product";
+import Image from "next/image";
+
+// interface Item {
+//   _id:string;
+//   image_url:string;
+//   name:string;
+//   description:string;
+//   price:number;
+// }
 const CartPage = () => {
   const { cart, removeFromCart } = useCart();
 
@@ -18,9 +28,11 @@ const CartPage = () => {
         >
           {/* Left Side: Product Image */}
           <div className="w-full md:w-1/2">
-            <img
+            <Image
               src={item.image_url}
               alt={item.name}
+              width={400}
+              height={400}
               className="w-[400px] h-[300px] object-cover rounded-lg border"
             />
           </div>

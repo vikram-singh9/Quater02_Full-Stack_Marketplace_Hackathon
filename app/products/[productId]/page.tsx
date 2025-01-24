@@ -2,6 +2,7 @@
 import React from "react";
 import { client } from "@/sanity/lib/client";
 import Link from "next/link";
+import Image from "next/image";
 
 interface Product {
   _id: string;
@@ -34,7 +35,7 @@ const ProductsDescription = async ({ params }: { params: { productId: string } }
     <div className="p-8 flex flex-col items-center justify-center gap-9 md:flex-row md:gap-40 ">
 
       <div>
-      <img
+      <Image
         src={product.image_url}
         alt={product.name}
         width={200}
