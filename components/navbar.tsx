@@ -2,8 +2,9 @@
 
 import React, { useState } from 'react';
 import { CiSearch } from 'react-icons/ci';
-import { IoCartOutline } from 'react-icons/io5';
-import { IoIosContact } from 'react-icons/io';
+import { BiCart } from 'react-icons/bi';
+import { LuContact } from 'react-icons/lu';
+import { BiHeart } from 'react-icons/bi';
 import { IoMenu, IoClose } from 'react-icons/io5';
 import Link from 'next/link';
 
@@ -16,7 +17,6 @@ const Navbar = () => {
 
   const navItems = [
     { name: 'Ceramics', href: '/ceramics' },
-    { name: 'Checkout', href: '/checkout' },
     { name: 'Chairs', href: '/chairs' },
     { name: 'Register', href: '/register' },
     { name: 'About', href: '/about' },
@@ -39,10 +39,13 @@ const Navbar = () => {
 
         {/* Icons for large screens */}
         <div className="hidden md:flex gap-4">
-          <Link href={'/shopping'}>
-            <IoCartOutline size={25} className="text-[#2A254B]" />
+        <Link href={'/wishlist'}>
+            <BiHeart size={25} className="text-[#2A254B]" />
           </Link>
-          <IoIosContact size={25} className="text-[#2A254B]" />
+          <Link href={'/cart'}>
+            <BiCart size={25} className="text-[#2A254B]" />
+          </Link>
+          <LuContact size={23} className="text-[#2A254B]" />
         </div>
 
         {/* Hamburger menu for mobile */}

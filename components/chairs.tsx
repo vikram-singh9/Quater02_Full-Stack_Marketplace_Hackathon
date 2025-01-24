@@ -14,7 +14,7 @@ interface Product {
   image_url: string;
 }
 
-const Ceramics = () => {
+const Chairs = () => {
   const [data, setData] = useState<Product[]>([]);
   const { wishlist, addToWishlist, removeFromWishlist } = useWishlist();
   const { cart, addToCart, removeFromCart } = useCart();
@@ -24,7 +24,7 @@ const Ceramics = () => {
     async function getData() {
       try {
         const fetchdata = await client.fetch(`
-          *[_type == "product"]{
+          *[_type == "product"][15..22]{
             _id,
             name,
             price,
@@ -42,7 +42,7 @@ const Ceramics = () => {
 
   return (
     <div className="px-4 md:px-8 py-12 text-[#2A254B] mt-12">
-      <h1 className="text-4xl font-semibold">New Ceramics</h1>
+      <h1 className="text-4xl font-semibold">Check out our latest Chairs</h1>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-12">
         {data.map((item) => (
           <div
@@ -53,7 +53,7 @@ const Ceramics = () => {
             <img
               src={item.image_url}
               alt={item.name}
-              className="w-full h-[70%] object-cover"
+              className="w-full h-[80%] object-cover"
             />
             <div className="mt-4 text-[#2A254B]">
               <p className="py-2 font-bold">{item.name}</p>
@@ -103,4 +103,4 @@ const Ceramics = () => {
   );
 };
 
-export default Ceramics;
+export default Chairs;

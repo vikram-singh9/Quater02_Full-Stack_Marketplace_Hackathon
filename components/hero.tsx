@@ -30,8 +30,8 @@ const Hero = () => {
             </div>
 
             {/* Right Section */}
-            <div className="hidden md:flex w-full md:w-[40%] h-auto md:h-[580px] bg-white justify-center items-end">
-              <Image src={'/images/rightt.png'} width={400} height={400} alt="right" />
+            <div className="hidden md:flex w-full md:w-[40%] h-auto md:h-[580px] bg-white justify-center items-end mt-16">
+              <Image src={'/images/herochair.png'} width={700} height={500} alt="right" priority />
             </div>
           </div>
         </div>

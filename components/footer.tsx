@@ -8,7 +8,7 @@ import { BsSkype, BsPinterest } from "react-icons/bs";
 const Footer = () => {
   return (
     <>
-      <section className="w-full px-6 md:px-20 py-9 bg-[#2A254B] flex flex-wrap justify-between text-white">
+      <section className="w-full px-6 md:px-20 py-9 bg-[#2A254B] flex flex-wrap justify-between text-white ">
         {/* Links Section */}
         <div className="flex flex-wrap gap-16 mb-8 text-sm">
           <div>
