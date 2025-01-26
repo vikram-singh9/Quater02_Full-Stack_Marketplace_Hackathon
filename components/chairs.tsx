@@ -65,7 +65,8 @@ const Chairs = () => {
             <img
               src={item.image_url}
               alt={item.name}
-             
+              width={100}
+                height={100}
               className="w-full h-[80%] object-cover"
             />
             <div className="mt-4 text-[#2A254B]">
