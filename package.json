@@ -10,9 +10,14 @@
     "import-data": "node scripts/importSanityData.mjs"
   },
   "dependencies": {
+    "@clerk/nextjs": "^6.10.4",
+    "@hookform/resolvers": "^3.10.0",
     "@next/font": "^14.2.15",
-    "@radix-ui/react-label": "^2.1.0",
+    "@radix-ui/react-label": "^2.1.1",
+    "@radix-ui/react-radio-group": "^1.2.2",
+    "@radix-ui/react-select": "^2.1.5",
     "@radix-ui/react-slot": "^1.1.0",
+    "@radix-ui/react-toast": "^1.2.5",
     "@sanity/client": "^6.25.0",
     "@sanity/image-url": "^1.1.0",
     "@sanity/vision": "^3.70.0",
@@ -25,6 +30,7 @@
     "next-sanity": "^9.8.37",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-hook-form": "^7.54.2",
     "react-icons": "^5.4.0",
     "sanity": "^3.70.0",
     "styled-components": "^6.1.14",

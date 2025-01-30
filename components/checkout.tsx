@@ -1,128 +1,184 @@
-'use client';
+"use client"
 
-import React, { useState } from "react";
-import { useCart } from "@/context/CartContext";
-import { Input } from "./ui/input";
-import { Textarea } from "./ui/textarea";
-const Checkout = () => {
-  const { cart } = useCart(); // Access cart from context
-  const [isCheckout, setIsCheckout] = useState(false); // Toggle between product list and form
+import { useState } from "react"
+import { useForm } from "react-hook-form"
+import { zodResolver } from "@hookform/resolvers/zod"
+import * as z from "zod"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { Textarea } from "@/components/ui/textarea"
+import { toast } from "@/hooks/use-toast"
 
-  // Calculate subtotal
-  const subtotal = cart.reduce((sum, item) => sum + item.price, 0);
+const formSchema = z.object({
+  firstName: z.string().min(2, "First name is required"),
+  lastName: z.string().min(2, "Last name is required"),
+  email: z.string().email("Invalid email address"),
+  phone: z.string().min(10, "Phone number is required"),
+  address1: z.string().min(5, "Address is required"),
+  address2: z.string().optional(),
+  city: z.string().min(2, "City is required"),
+  state: z.string().min(2, "State is required"),
+  postalCode: z.string().min(5, "Postal code is required"),
+  country: z.string().min(2, "Country is required"),
+  paymentMethod: z.enum(["credit", "paypal"]),
+  cardNumber: z.string().min(16, "Card number is required").max(16),
+  cardExpiry: z.string().min(5, "Expiry date is required").max(5),
+  cardCVC: z.string().min(3, "CVC is required").max(4),
+  notes: z.string().optional(),
+})
 
-  // Render user details form
-  const renderCheckoutForm = () => (
-    <div className="w-full lg:w-2/3">
-      <h1 className="text-xl font-semibold mb-6">User Details</h1>
-      <form className="space-y-6">
-        <div>
-          <label htmlFor="name" className="block text-gray-600 mb-2">
-            Full Name
-          </label>
-          <Input
-            type="text"
-            id="name"
-            className="w-full border border-gray-300 rounded-lg p-3"
-            placeholder="Enter your full name"
-          />
-        </div>
-        <div>
-          <label htmlFor="email" className="block text-gray-600 mb-2">
-            Email
-          </label>
-          <Input
-            type="email"
-            id="email"
-            className="w-full border border-gray-300 rounded-lg p-3"
-            placeholder="Enter your email"
-          />
-        </div>
-        <div>
-          <label htmlFor="address" className="block text-gray-600 mb-2">
-            Shipping Address
-          </label>
-          <Textarea
-            id="address"
-            className="w-full border border-gray-300 rounded-lg p-3"
-            placeholder="Enter your shipping address"
-            rows={4}
-          />
-        </div>
-        <button
-          type="submit"
-          className="w-full bg-gray-800 text-white py-3 rounded-lg"
-        >
-          Place Order
-        </button>
-      </form>
-    </div>
-  );
+type FormData = z.infer<typeof formSchema>
+
+export default function CheckoutForm() {
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    watch,
+  } = useForm<FormData>({
+    resolver: zodResolver(formSchema),
+  })
+
+  const paymentMethod = watch("paymentMethod")
+
+  const onSubmit = async (data: FormData) => {
+    setIsSubmitting(true)
+    // Simulate API call
+    await new Promise((resolve) => setTimeout(resolve, 2000))
+    console.log(data)
+    setIsSubmitting(false)
+    toast({
+      title: "Order placed!",
+      description: "Your order has been successfully placed.",
+    })
+  }
 
   return (
-    <section>
-      <div className="py-12 mt-12">
-        <div className="w-[90%] mx-auto border border-gray-300 rounded-lg p-6 lg:p-10">
-          <div className="flex flex-col lg:flex-row justify-between gap-6">
-            {/* Product List or Checkout Form */}
-            {!isCheckout ? (
-              <div className="w-full lg:w-2/3">
-                <h1 className="text-xl font-semibold mb-6">Products</h1>
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-8 max-w-2xl mx-auto">
+      <div className="space-y-2">
+        <h2 className="text-2xl font-bold">Personal Information</h2>
+        <div className="grid grid-cols-2 gap-4">
+          <div>
+            <Label htmlFor="firstName">First Name</Label>
+            <Input id="firstName" {...register("firstName")} />
+            {errors.firstName && <p className="text-red-500 text-sm">{errors.firstName.message}</p>}
+          </div>
+          <div>
+            <Label htmlFor="lastName">Last Name</Label>
+            <Input id="lastName" {...register("lastName")} />
+            {errors.lastName && <p className="text-red-500 text-sm">{errors.lastName.message}</p>}
+          </div>
+        </div>
+        <div>
+          <Label htmlFor="email">Email</Label>
+          <Input id="email" type="email" {...register("email")} />
+          {errors.email && <p className="text-red-500 text-sm">{errors.email.message}</p>}
+        </div>
+        <div>
+          <Label htmlFor="phone">Phone</Label>
+          <Input id="phone" {...register("phone")} />
+          {errors.phone && <p className="text-red-500 text-sm">{errors.phone.message}</p>}
+        </div>
+      </div>
 
-                {cart.map((item) => (
-                  <div key={item._id} className="flex items-center gap-4 mb-6">
-                    <img
-                      src={item.image_url}
-                      alt={item.name}
-                      width={100}
-                      height={100}
-                      className="rounded-md"
-                    />
-                    <div>
-                      <h1 className="text-lg font-semibold">{item.name}</h1>
-                      {/* <p className="text-gray-600 text-sm">{item.description}</p> */}
-                      <h1 className="text-sm font-bold">${item.price}</h1>
-                    </div>
-                  </div>
-                ))}
-
-                <p className="text-sm text-gray-500">
-                  Taxes and shipping are calculated at checkout.
-                </p>
-              </div>
-            ) : (
-              renderCheckoutForm()
-            )}
-
-            {/* Summary Section */}
-            <div className="w-full lg:w-1/3 bg-gray-50 rounded-lg p-6">
-              <h1 className="text-xl font-semibold mb-6">Order Summary</h1>
-
-              <div className="flex justify-between mb-4">
-                <p className="text-gray-600">Subtotal</p>
-                <p className="font-bold">${subtotal.toFixed(2)}</p>
-              </div>
-
-              <div className="flex justify-between mb-4">
-                <p className="text-gray-600">Total</p>
-                <p className="font-bold">${subtotal.toFixed(2)}</p>
-              </div>
-
-              {/* Checkout Button */}
-              {!isCheckout && (
-                <button
-                  className="w-full bg-gray-800 text-white py-3 rounded-lg"
-                  onClick={() => setIsCheckout(true)} // Toggle to checkout form
-                >
-                  Go to Checkout
-                </button>
-              )}
-            </div>
+      <div className="space-y-2">
+        <h2 className="text-2xl font-bold">Shipping Address</h2>
+        <div>
+          <Label htmlFor="address1">Address Line 1</Label>
+          <Input id="address1" {...register("address1")} />
+          {errors.address1 && <p className="text-red-500 text-sm">{errors.address1.message}</p>}
+        </div>
+        <div>
+          <Label htmlFor="address2">Address Line 2 (Optional)</Label>
+          <Input id="address2" {...register("address2")} />
+        </div>
+        <div className="grid grid-cols-2 gap-4">
+          <div>
+            <Label htmlFor="city">City</Label>
+            <Input id="city" {...register("city")} />
+            {errors.city && <p className="text-red-500 text-sm">{errors.city.message}</p>}
+          </div>
+          <div>
+            <Label htmlFor="state">State</Label>
+            <Input id="state" {...register("state")} />
+            {errors.state && <p className="text-red-500 text-sm">{errors.state.message}</p>}
+          </div>
+        </div>
+        <div className="grid grid-cols-2 gap-4">
+          <div>
+            <Label htmlFor="postalCode">Postal Code</Label>
+            <Input id="postalCode" {...register("postalCode")} />
+            {errors.postalCode && <p className="text-red-500 text-sm">{errors.postalCode.message}</p>}
+          </div>
+          <div>
+            <Label htmlFor="country">Country</Label>
+            <Select onValueChange={(value) => register("country").onChange({ target: { value } })}>
+              <SelectTrigger>
+                <SelectValue placeholder="Select a country" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="us">United States</SelectItem>
+                <SelectItem value="ca">Canada</SelectItem>
+                <SelectItem value="uk">United Kingdom</SelectItem>
+                <SelectItem value="k">Pakistan</SelectItem>
+                {/* Add more countries as needed */}
+              </SelectContent>
+            </Select>
+            {errors.country && <p className="text-red-500 text-sm">{errors.country.message}</p>}
           </div>
         </div>
       </div>
-    </section>
-  );
-};
 
-export default Checkout;
+      <div className="space-y-2">
+        <h2 className="text-2xl font-bold">Payment Information</h2>
+        <RadioGroup onValueChange={(value) => register("paymentMethod").onChange({ target: { value } })}>
+          <div className="flex items-center space-x-2">
+            <RadioGroupItem value="credit" id="credit" />
+            <Label htmlFor="credit">Credit Card</Label>
+          </div>
+          <div className="flex items-center space-x-2">
+            <RadioGroupItem value="paypal" id="paypal" />
+            <Label htmlFor="paypal">PayPal</Label>
+          </div>
+        </RadioGroup>
+        {errors.paymentMethod && <p className="text-red-500 text-sm">{errors.paymentMethod.message}</p>}
+
+        {paymentMethod === "credit" && (
+          <div className="space-y-2">
+            <div>
+              <Label htmlFor="cardNumber">Card Number</Label>
+              <Input id="cardNumber" {...register("cardNumber")} />
+              {errors.cardNumber && <p className="text-red-500 text-sm">{errors.cardNumber.message}</p>}
+            </div>
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <Label htmlFor="cardExpiry">Expiry Date (MM/YY)</Label>
+                <Input id="cardExpiry" {...register("cardExpiry")} placeholder="MM/YY" />
+                {errors.cardExpiry && <p className="text-red-500 text-sm">{errors.cardExpiry.message}</p>}
+              </div>
+              <div>
+                <Label htmlFor="cardCVC">CVC</Label>
+                <Input id="cardCVC" {...register("cardCVC")} />
+                {errors.cardCVC && <p className="text-red-500 text-sm">{errors.cardCVC.message}</p>}
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+
+      <div>
+        <Label htmlFor="notes">Order Notes (Optional)</Label>
+        <Textarea id="notes" {...register("notes")} />
+      </div>
+
+      <Button type="submit" disabled={isSubmitting}>
+        {isSubmitting ? "Placing Order..." : "Place Order"}
+      </Button>
+    </form>
+  )
+}
+

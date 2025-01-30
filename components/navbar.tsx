@@ -7,6 +7,7 @@ import { LuContact } from 'react-icons/lu';
 import { BiHeart } from 'react-icons/bi';
 import { IoMenu, IoClose } from 'react-icons/io5';
 import Link from 'next/link';
+import Login from './login';
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -16,12 +17,15 @@ const Navbar = () => {
   };
 
   const navItems = [
+    
     { name: 'Ceramics', href: '/ceramics' },
     { name: 'Chairs', href: '/chairs' },
     { name: 'Register', href: '/register' },
     { name: 'About', href: '/about' },
     { name: 'Cart', href: '/cart' },
+    { name: 'Wishlist', href: '/wishlist' },
   ];
+
 
   return (
     <div className="p-4 w-full h-auto sticky top-0 z-50 bg-white">
@@ -45,6 +49,9 @@ const Navbar = () => {
           <Link href={'/cart'}>
             <BiCart size={25} className="text-[#2A254B]" />
           </Link>
+
+      {/* <Login/> */}
+          
           <LuContact size={23} className="text-[#2A254B]" />
         </div>
 
