@@ -31,7 +31,7 @@ const CartPage = () => {
         <p className="text-lg text-center text-gray-600">Your cart is empty!</p>
       ) : (
         <div className="space-y-8">
-          {cart.map((item) => (
+          {cart.map((item:any) => (
             <div
               key={item._id}
               className="cart-item flex flex-col md:flex-row items-center rounded-lg p-6 gap-6"
@@ -54,18 +54,22 @@ const CartPage = () => {
                   <p className="text-lg font-semibold text-gray-700">
                     Price: ${item.price}
                   </p>
+
+                  <p className="text-sm text-gray-700">
+                    Price: ${item.description}
+                  </p>
           
                 </div>
 
                 <div className="mt-6 flex flex-col sm:flex-row gap-4">
                   <Button
                     onClick={() => removeFromCart(item._id)}
-                    className="bg-red-500 text-white text-sm px-6 py-2 rounded-lg hover:bg-red-600"
+                    className="bg-red-500 text-white text-sm px-4 py-2 rounded-lg hover:bg-red-600"
                   >
                     Remove
                   </Button>
                   <Link href={'/checkout'}
-                    className="bg-[#2A254B] text-white text-sm px-6 py-2 rounded-lg"
+                    className="bg-[#2A254B] text-white text-sm px-4 py-2 rounded-lg text-center"
                   >
                     Checkout
                   </Link>

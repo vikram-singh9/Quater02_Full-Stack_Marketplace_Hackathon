@@ -65,7 +65,7 @@ const Chairs = () => {
                 alt={item.name}
                 width={100}
                 height={100}
-                className="w-full h-[80%] object-cover"
+                className="w-full h-[80%] object-cover rounded-lg"
               />
               <div className="mt-4 text-[#2A254B]">
                 <p className="py-2 font-bold">{item.name}</p>

@@ -58,10 +58,10 @@ export default function CheckoutForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-8 max-w-2xl mx-auto">
-      <div className="space-y-2">
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-8 max-w-2xl mx-7 ">
+      <div className="space-y-2 ">
         <h2 className="text-2xl font-bold">Personal Information</h2>
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-2 gap-4 ">
           <div>
             <Label htmlFor="firstName">First Name</Label>
             <Input id="firstName" {...register("firstName")} />
