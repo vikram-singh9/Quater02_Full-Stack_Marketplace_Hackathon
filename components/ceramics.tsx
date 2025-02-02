@@ -6,6 +6,8 @@ import { useRouter } from "next/navigation";
 import { useWishlist } from "@/context/WishListContext";
 import { useCart } from "@/context/CartContext";
 
+
+
 interface Product {
   _id: string;
   name: string;
