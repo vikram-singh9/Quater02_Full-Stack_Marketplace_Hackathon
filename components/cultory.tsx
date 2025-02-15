@@ -13,7 +13,7 @@ import { Star, ShoppingCart, Truck } from "lucide-react"
 import { groq } from "next-sanity"
 import Swal from "sweetalert2"
 
-export default function Listing() {
+export default function Cultory() {
   const [data, setData] = useState<Product[]>([])
   const [loading, setLoading] = useState(true)
 
@@ -21,7 +21,7 @@ export default function Listing() {
     const fetchData = async () => {
       try {
         const response: Product[] = await client.fetch(groq`
-          *[_type == "product"]{
+          *[_type == "product"][15..20]{
             _id,
             name,
             "slug": slug.current,
@@ -61,7 +61,7 @@ export default function Listing() {
   return (
     <div className="min-h-screen bg-gray-100 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
-        <h1 className="text-4xl font-bold text-center mb-12 text-gray-800">Ceramics</h1>
+        <h1 className="text-4xl font-bold text-center mb-12 text-gray-800">Cultory</h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
           {data.map((item: Product) => (
             <ProductCard key={item._id} item={item} onAddToCart={handleAddToCart} />

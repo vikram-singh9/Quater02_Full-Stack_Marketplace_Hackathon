@@ -19,6 +19,8 @@ const Navbar = () => {
   const navItems = [
     { name: "Ceramics", href: "/ceramics" },
     { name: "Chairs", href: "/chairs" },
+    { name: "Cultory", href: "/cultory" },
+    { name: "plantpots", href: "/plantspots" },
     { name: "Register", href: "/register" },
     { name: "About", href: "/about" },
   ];
