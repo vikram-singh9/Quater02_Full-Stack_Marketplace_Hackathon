@@ -1,24 +1,17 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
-
 import "./globals.css";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
-import { WishlistProvider } from "@/context/WishListContext";
-import { CartProvider } from "@/context/CartContext";
-
 import { ClerkProvider } from "@clerk/nextjs";
+import { Poppins } from "next/font/google";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
+const poppins = Poppins({
+  subsets: ["latin"], // Optimized subset
+  weight: ["300", "400", "500", "600", "700"], // Include the weights you need
+  variable: "--font-poppins", // Define a CSS variable for global use
 });
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
+
+
 
 export const metadata: Metadata = {
   title: "Avion",
@@ -34,15 +27,11 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en">
         <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-        >
-          <CartProvider>
-            <WishlistProvider>
+          className={`${poppins.variable} antialiased`}
+        >   
               <Navbar />
               {children}
               <Footer />
-            </WishlistProvider>
-          </CartProvider>
         </body>
       </html>
     </ClerkProvider>

@@ -5,5 +5,7 @@ export interface Product {
   price: number;
   description: string;
   image_url: string;
+  slug:'string';
+  ratingCount: number;
   // Add other fields as needed
 }

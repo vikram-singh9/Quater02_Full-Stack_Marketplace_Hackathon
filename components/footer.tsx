@@ -1,131 +1,130 @@
-'use client'
-import React from "react";
-import { Input } from "./ui/input";
-import { Button } from "./ui/button";
-import { CiLinkedin, CiFacebook, CiInstagram, CiTwitter } from "react-icons/ci";
-import { BsSkype, BsPinterest } from "react-icons/bs";
+"use client"
+
+import type React from "react"
+import { Input } from "./ui/input"
+import { Button } from "./ui/button"
+import { CiLinkedin, CiFacebook, CiInstagram, CiTwitter } from "react-icons/ci"
+import { BsSkype, BsPinterest } from "react-icons/bs"
+import { Separator } from "./ui/separator"
+import Link from "next/link"
+// import { useToast } from "./ui/use-toast"
 
 const Footer = () => {
+  // const { toast } = useToast()
+
+  const handleNewsletterSignup = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    alert("Subscribed! You've successfully signed up for our newsletter.")
+  }
+
   return (
-    <>
-      <section className="w-full px-6 md:px-20 py-9 bg-[#2A254B] flex flex-wrap justify-between text-white ">
-        {/* Links Section */}
-        <div className="flex flex-wrap gap-16 mb-8 text-sm">
+    <footer className="bg-gray-900 text-gray-300">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="space-y-4">
+            <h2 className="text-2xl font-bold text-white">Avion</h2>
+            <p className="text-sm">Elevating your home with curated, high-quality furniture and decor.</p>
+            <div className="flex space-x-4">
+              <Link href="#" aria-label="LinkedIn">
+                <CiLinkedin size={24} />
+              </Link>
+              <Link href="#" aria-label="Facebook">
+                <CiFacebook size={24} />
+              </Link>
+              <Link href="#" aria-label="Instagram">
+                <CiInstagram size={24} />
+              </Link>
+              <Link href="#" aria-label="Twitter">
+                <CiTwitter size={24} />
+              </Link>
+              <Link href="#" aria-label="Skype">
+                <BsSkype size={24} />
+              </Link>
+              <Link href="#" aria-label="Pinterest">
+                <BsPinterest size={24} />
+              </Link>
+            </div>
+          </div>
+
           <div>
-            <ul className="space-y-2">
+            <h3 className="text-lg font-semibold mb-4 text-white">Shop</h3>
+            <ul className="space-y-2 text-sm">
               <li>
-                <a href="#">Menu</a>
+                <Link href="#">New Arrivals</Link>
               </li>
               <li>
-                <a href="#">New Arrivals</a>
+                <Link href="#">Best Sellers</Link>
               </li>
               <li>
-                <a href="#">Best Sellers</a>
+                <Link href="#">Sale</Link>
               </li>
               <li>
-                <a href="#">Recently Viewed</a>
+                <Link href="#">Furniture</Link>
               </li>
               <li>
-                <a href="#">Popular This Week</a>
+                <Link href="#">Home Decor</Link>
               </li>
               <li>
-                <a href="#">All Products</a>
+                <Link href="#">Lighting</Link>
               </li>
             </ul>
           </div>
 
           <div>
-            <ul className="space-y-2">
+            <h3 className="text-lg font-semibold mb-4 text-white">Customer Service</h3>
+            <ul className="space-y-2 text-sm">
               <li>
-                <a href="#">Categories</a>
+                <Link href="#">Contact Us</Link>
               </li>
               <li>
-                <a href="#">Furniture</a>
+                <Link href="#">Shipping & Returns</Link>
               </li>
               <li>
-                <a href="#">Home Ware</a>
+                <Link href="#">FAQ</Link>
               </li>
               <li>
-                <a href="#">Plant Pots</a>
+                <Link href="#">Track Your Order</Link>
               </li>
               <li>
-                <a href="#">Chairs</a>
+                <Link href="#">Privacy Policy</Link>
               </li>
               <li>
-                <a href="#">Crockery</a>
+                <Link href="#">Terms of Service</Link>
               </li>
             </ul>
           </div>
 
           <div>
-            <ul className="space-y-2">
-              <li>
-                <a href="#">Our Company</a>
-              </li>
-              <li>
-                <a href="#">About Us</a>
-              </li>
-              <li>
-                <a href="#">Return Policy</a>
-              </li>
-              <li>
-                <a href="#">Vacancies</a>
-              </li>
-              <li>
-                <a href="#">Contact Us</a>
-              </li>
-              <li>
-                <a href="#">Privacy</a>
-              </li>
-            </ul>
+            <h3 className="text-lg font-semibold mb-4 text-white">Join Our Newsletter</h3>
+            <p className="text-sm mb-4">Stay updated with our latest offers, new arrivals, and exclusive discounts.</p>
+            <form onSubmit={handleNewsletterSignup} className="space-y-2">
+              <Input
+                type="email"
+                placeholder="Your email address"
+                className="bg-gray-800 border-gray-700 text-white"
+                required
+              />
+              <Button type="submit" className="w-full bg-white text-gray-900 hover:bg-gray-200">
+                Subscribe
+              </Button>
+            </form>
           </div>
         </div>
 
-        {/* Newsletter Section */}
-        <div className="space-y-4 w-full md:w-auto">
-          <span className="block text-lg">Join Our Mailing List</span>
-          <div className="flex items-center">
-            <Input
-              type="email"
-              placeholder="Your@gmail.com"
-              className="h-12 text-black w-full md:w-auto"
+        <Separator className="bg-gray-700" />
 
-            />
-            <Button className="h-12 px-6" variant="vikram" onClick={() => alert('sign up successflly')}>
-              Sign up
-            </Button>
+        <div className="py-6 flex flex-col sm:flex-row justify-between items-center text-sm">
+          <p>&copy; 2023 Avion LTD. All rights reserved.</p>
+          <div className="flex space-x-4 mt-4 sm:mt-0">
+            <Link href="#">Privacy Policy</Link>
+            <Link href="#">Terms of Use</Link>
+            <Link href="#">Accessibility</Link>
           </div>
-        </div>
-      </section>
-
-      <hr className="bg-[#726e8d]" />
-
-      {/* Footer Bottom Section */}
-      <div className="w-full px-6 md:px-20 py-3 flex flex-wrap justify-between items-center bg-[#2A254B] text-white text-sm">
-        <p className="mb-2 md:mb-0">Copyright 2022 Avion LTD</p>
-        <div className="flex gap-4">
-          <a href="#" aria-label="LinkedIn">
-            <CiLinkedin size={24} />
-          </a>
-          <a href="#" aria-label="Facebook">
-            <CiFacebook size={24} />
-          </a>
-          <a href="#" aria-label="Instagram">
-            <CiInstagram size={24} />
-          </a>
-          <a href="#" aria-label="Skype">
-            <BsSkype size={24} />
-          </a>
-          <a href="#" aria-label="Twitter">
-            <CiTwitter size={24} />
-          </a>
-          <a href="#" aria-label="Pinterest">
-            <BsPinterest size={24} />
-          </a>
         </div>
       </div>
-    </>
-  );
-};
+    </footer>
+  )
+}
 
-export default Footer;
+export default Footer
+

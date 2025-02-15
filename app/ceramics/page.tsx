@@ -1,5 +1,5 @@
 'use client'
-import Ceramics from '@/components/ceramics'
+import Ceramics from '@/components/listing'
 import React from 'react'
 
 const Chair = () => {

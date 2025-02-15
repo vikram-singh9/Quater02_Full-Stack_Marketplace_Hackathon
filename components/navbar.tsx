@@ -94,7 +94,7 @@ const Navbar = () => {
             <div className="md:hidden flex flex-col gap-4">
               <li className="hover:text-black transition">
                 <Link href={"/wishlist"} className="flex items-center gap-2">
-                  <BiHeart size={20} className="text-[#2A254B]" />
+                  {/* <BiHeart size={20} className="text-[#2A254B]" /> */}
                  
                 </Link>
               </li>
