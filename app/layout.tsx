@@ -4,12 +4,14 @@ import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import { ClerkProvider } from "@clerk/nextjs";
 import { Poppins } from "next/font/google";
+import { Analytics } from "@vercel/analytics/react"
 
 const poppins = Poppins({
-  subsets: ["latin"], // Optimized subset
-  weight: ["300", "400", "500", "600", "700"], // Include the weights you need
-  variable: "--font-poppins", // Define a CSS variable for global use
-});
+  subsets: ['latin'], 
+  weight: ['400', '600'], // Choose weights you need
+  style: ['normal', 'italic'], // Optional styles
+  display: 'swap'
+})
 
 
 
@@ -27,11 +29,12 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en">
         <body
-          className={`${poppins.variable} antialiased`}
+         className={poppins.className}
         >   
               <Navbar />
               {children}
               <Footer />
+              <Analytics />
         </body>
       </html>
     </ClerkProvider>

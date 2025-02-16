@@ -118,6 +118,7 @@ export default function CartPage() {
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.3 }}
             >
+            
               <Card className="mb-4 overflow-hidden">
                 <div className="flex flex-col sm:flex-row">
                   <div className="w-full sm:w-1/4 relative aspect-square">
@@ -127,6 +128,7 @@ export default function CartPage() {
                     <div>
                       <h2 className="text-xl font-semibold mb-2">{item.name}</h2>
                       <p className="text-gray-600 mb-2">${item.price.toFixed(2)}</p>
+                      <p className="text-gray-600 mb-2">{item.description}</p>
                     </div>
                     <div className="flex items-center justify-between">
                       <div className="flex items-center">
